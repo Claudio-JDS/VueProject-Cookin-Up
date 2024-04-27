@@ -1,15 +1,14 @@
 <script lang="ts">
 import Tag from './Tag.vue';
 
-
 export default {
   components: { Tag },
   props: {
-    ingrediente: {type: String, required: true}
+    ingrediente: { type: String, required: true }
   },
   data() {
     return {
-       selecionado: false 
+      selecionado: false
     }
   },
   methods: {
@@ -17,26 +16,24 @@ export default {
       this.selecionado = !this.selecionado
 
       if (this.selecionado) {
-        this.$emit(`adicioanarIngrediente`, this.ingrediente);
+        this.$emit('adicionarIngrediente', this.ingrediente)
+      } else {
+        this.$emit('removerIngrediente', this.ingrediente);
       }
     }
   },
-  emits: ['adicioanarIngrediente'] 
+  emits: ['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
 <template>
-  <button 
-    class="ingrediente" 
-    v-on:click="aoClicar()" 
-    :aria-pressed="selecionado"
-  >
+  <button class="ingrediente" @click="aoClicar" :aria-pressed="selecionado">
     <Tag :texto="ingrediente" :ativa="selecionado" />
   </button>
 </template>
 
 <style scoped>
-  .ingrediente {
-    cursor: pointer;
-  }
+.ingrediente {
+  cursor: pointer;
+}
 </style>
