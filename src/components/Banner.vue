@@ -4,16 +4,16 @@
       <img src="../assets/images/logo.svg" alt="Logo Cookin' up" class="logo">
 
       <p class="cabecalho-lg frase-cabecalho">
-        <span class="texto-verde">Um banquete de ideias pra </span>
+        <span class="texto-verde">Um banquete de ideias para</span>
         despertar o chef que há em você!
       </p>
 
-      <p class="substituir-lg">
-        Explore novas receitas todos os dias com os ingredientes que estão ao seu alcance
+      <p class="subtitulo-lg">
+        Explore novas receitas todos os dias com os ingredientes que estão ao seu alcance!
       </p>
     </div>
 
-    <img src="../assets/images/foto-banner.png" alt="Foto de uma mulher cunzinhando" class="foto-banner">
+    <img src="../assets/images/foto-banner.png" alt="Foto de uma mulher conzinhando" class="foto-banner">
   </header>
 </template>
 

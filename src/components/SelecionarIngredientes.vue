@@ -1,17 +1,18 @@
 <script lang="ts">
 import { obterCategorias } from '@/http/index';
 import type ICategoria from '@/interfaces/ICategoria';
+import CardCategoria from './CardCategoria.vue';
 
 export default {
   data() {
     return {
       categorias: [] as ICategoria[]
-    } 
+    };
   },
-  // created -> é executado depois que as propriedades do data estiverem sido definidas
   async created() {
     this.categorias = await obterCategorias();
-  }
+  },
+  components: { CardCategoria }
 }
 </script>
 
@@ -20,17 +21,17 @@ export default {
     <h1 class="cabecalho titulo-ingredientes">Ingredientes</h1>
 
     <p class="paragrafo-lg instrucoes">
-      Selecione a baixo os ingredientes que vc quer usar nesta receita
+      Selecione abaixo os ingredientes que você quer usar nesta receita:
     </p>
 
     <ul class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        {{ categoria.nome }}
+        <CardCategoria :categoria="categoria" />
       </li>
     </ul>
 
     <p class="paragrafo dica">
-      *Atenção: consideramos que vc tem em casa sal, pimenta e água.
+      *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
   </section>
 </template>

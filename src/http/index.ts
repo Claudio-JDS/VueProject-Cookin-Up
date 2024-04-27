@@ -5,12 +5,6 @@ export async function obterCategorias() {
 
   const categorias: ICategoria[] = await resposta.json();
 
-  /*Caso queira determinar um tempo para a resposta da api*/
-  // await new Promise((resolve) => {
-  //   // Demora 3 segundos para obter respostas
-  //   setTimeout(resolve, 3000)
-  // })
-
   return categorias;
 }
 

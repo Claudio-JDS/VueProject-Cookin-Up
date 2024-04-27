@@ -1,12 +1,12 @@
 <script lang="ts">
 import Banner from './components/Banner.vue';
-import PagConteudo from './components/PagConteudo.vue'
+import ConteudoPrincipal from './components/ConteudoPrincipal.vue'
 
 
 export default {
   components: {
     Banner,
-    PagConteudo,
+    ConteudoPrincipal,
     
   }
 }
@@ -16,8 +16,8 @@ export default {
 
 <template>
   <Banner />
-  <PagConteudo />
-  
+  <ConteudoPrincipal />
+
 </template>
 
 <style scoped></style>
