@@ -27,8 +27,12 @@ export default {
 </script>
 
 <template>
-  <button class="ingrediente" @click="aoClicar" :aria-pressed="selecionado">
-    <Tag :texto="ingrediente" :ativa="selecionado" />
+  <button 
+    class="ingrediente" 
+    @click="aoClicar" 
+    :aria-pressed="selecionado">
+    <Tag :texto="ingrediente" :ativa="selecionado" 
+  />
   </button>
 </template>
 

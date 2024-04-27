@@ -4,7 +4,7 @@ import SelecionarIngredientes from './SelecionarIngredientes.vue';
 import SuaLista from './SuaLista.vue';
 import Tag from './Tag.vue';
 
-type Pagina = 'SelecionarIngredientes' | 'MostrarReceitas'
+type Pagina = 'SelecionarIngredientes' | 'MostrarReceitas';
 
 export default {
   data() {
@@ -22,7 +22,7 @@ export default {
       this.ingredientes = this.ingredientes.filter(iLista => ingrediente !== iLista);
     },
     navegar(pagina: Pagina) {
-      this.conteudo = pagina
+      this.conteudo = pagina;
     }
   }
 }
@@ -32,13 +32,18 @@ export default {
   <main class="conteudo-principal">
     <SuaLista :ingredientes="ingredientes" />
 
-    <SelecionarIngredientes 
-      v-if="conteudo === 'SelecionarIngredientes'"             @adicionar-ingrediente="adicionarIngrediente"
-      @remover-ingrediente="removerIngrediente" 
-      @buscar-receitas="navegar('MostrarReceitas')" 
-    />
+    <KeepAlive include="SelecionarIngredientes">
+      <SelecionarIngredientes 
+        v-if="conteudo === 'SelecionarIngredientes'" 
+        @adicionar-ingrediente="adicionarIngrediente"
+        @remover-ingrediente="removerIngrediente" @buscar-receitas="navegar('MostrarReceitas')" 
+      />
 
-    <MostrarReceitas v-else-if=" conteudo = 'MostrarReceitas'" />
+      <MostrarReceitas 
+        v-else-if="conteudo === 'MostrarReceitas'" :ingredientes="ingredientes"
+        @editar-receitas="navegar('SelecionarIngredientes')" 
+      />
+    </KeepAlive>
   </main>
 </template>
 
