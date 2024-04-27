@@ -11,14 +11,24 @@ export default {
     return {
        selecionado: false 
     }
-  } 
+  },
+  methods: {
+    aoClicar() {
+      this.selecionado = !this.selecionado
+
+      if (this.selecionado) {
+        this.$emit(`adicioanarIngrediente`, this.ingrediente);
+      }
+    }
+  },
+  emits: ['adicioanarIngrediente'] 
 }
 </script>
 
 <template>
   <button 
     class="ingrediente" 
-    v-on:click="selecionado = !selecionado" 
+    v-on:click="aoClicar()" 
     :aria-pressed="selecionado"
   >
     <Tag :texto="ingrediente" :ativa="selecionado" />

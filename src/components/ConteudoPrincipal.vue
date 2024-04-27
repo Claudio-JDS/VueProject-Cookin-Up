@@ -6,10 +6,18 @@ import Tag from './Tag.vue';
 export default {
   data() {
     return {
-      ingredientes: ['Alho', 'Manteiga', 'Orégano']
+      /*O array começa inicialmete com esses três itens mas ficara vazia para quando for clicado ao ingredientes serem adicionados a lista*/
+      // ingredientes: ['Alho', 'Manteiga', 'Orégano']
+      ingredientes: [] as string[]
     };
   },
-  components: { SelecionarIngredientes, Tag, SuaLista }
+  components: { SelecionarIngredientes, Tag, SuaLista },
+  methods: {
+    // @adicionar-ingrediente="ingredientes.push($event)" a função vai substituir a chamada direta no componente
+    adicionarIngredientes(ingrediente: string) {
+      this.ingredientes.push(ingrediente)
+    }
+  }
 }
 </script>
 
@@ -17,7 +25,9 @@ export default {
   <main class="conteudo-principal">
     <SuaLista :ingredientes="ingredientes" />
 
-    <SelecionarIngredientes />
+    <SelecionarIngredientes 
+      @adicionar-ingrediente="adicionarIngredientes"
+    />
   </main>
 </template>
 

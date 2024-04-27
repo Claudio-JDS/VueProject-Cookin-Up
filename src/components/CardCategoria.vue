@@ -8,7 +8,8 @@ export default {
   props: {
     categoria: { type: Object as PropType<ICategoria>, required: true }
   },
-  components: { Tag, IngredienteSelecionavel }
+  components: { Tag, IngredienteSelecionavel },
+  emits: [`adicionarIngrediente`]
 }
 </script>
 
@@ -25,8 +26,11 @@ export default {
         v-for="ingrediente in categoria.ingredientes" 
         :key="ingrediente"
       >
-        <IngredienteSelecionavel :ingrediente="ingrediente"/>
-        <!-- <Tag :texto="ingrediente" /> -->
+        <IngredienteSelecionavel 
+          :ingrediente="ingrediente"
+          @adicioanar-ingrediente="$emit('adicionarIngrediente', $event)"
+        />
+ 
       </li>
     </ul>
   </article>
